@@ -68,6 +68,21 @@
     <script src="~/js/signalr/dist/browser/signalr.js"></script>
     <script src="~/js/chat.js"></script>
 *@
+<script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('1f8dce6a40baabcac9a2', {
+        cluster: 'us2'
+    });
+
+    var channel = pusher.subscribe('my-channel');
+    channel.bind('my-event', function (data) {
+        alert(JSON.stringify(data));
+    });
+</script>
+<script src="https://js.pusher.com/7.0/pusher.min.js"></script>
 <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
 <script src="~/js/simplechat.js"></script>
 <script src="~/js/main.js"></script>
