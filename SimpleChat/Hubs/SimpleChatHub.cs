@@ -8,6 +8,11 @@ namespace SimpleChat.Hubs
 {
     public class SimpleChatHub : Hub
     {
+        public async Task SendMessage(string user, string message)
+        {
+            await Clients.All.SendAsync("ReceiveMessage", user, message);
+        }
+
         public void BroadcastMessage(string name, string message)
         {
             Clients.All.SendAsync("broadcastMessage", name, message);
