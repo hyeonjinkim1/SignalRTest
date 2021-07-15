@@ -30,6 +30,7 @@ namespace SimpleChat
 
             app.UseStaticFiles();
             app.UseRouting();
+            // app.MapAzureSignalR(this.GetType().FullName);
 
             app.UseEndpoints(endpoints =>
             {

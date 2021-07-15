@@ -1,5 +1,6 @@
 html {
   height: 100%;
+
 }
 
 html, body {
@@ -19,11 +20,23 @@ header {
   color: white;
 }
 
+#messagesList {
+    background-color: darkblue;
+    color: white;
+    margin: 0;
+    border-top: 10px;
+    border-top-color: red;
+}
+
+.container{
+    margin-left: 10px;
+}
+
 main, header > h1 {
-  padding: 0 16px;
-  max-width: 760px;
-  box-sizing: border-box;
-  margin: 0 auto;
+    padding: 0 16px;
+    max-width: 760px;
+    box-sizing: border-box;
+    /*margin: 0 auto;*/
 }
 
 main {
