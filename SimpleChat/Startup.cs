@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SimpleChat.Hubs;
 
 namespace SimpleChat
 {
@@ -18,6 +19,7 @@ namespace SimpleChat
         {
             services.AddRazorPages();
             services.AddSignalR();
+            services.AddSignalR().AddAzureSignalR();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -30,11 +32,16 @@ namespace SimpleChat
 
             app.UseStaticFiles();
             app.UseRouting();
+            app.UseAzureSignalR(routes =>
+            {
+                routes.MapHub<SimpleChatHub>("/simplechat");
+            });
+            // app.MapAzureSignalR(this.GetType().FullName);
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapRazorPages();
-                endpoints.MapHub<SimpleChat.Hubs.SimpleChat>("/simplechat");
+                endpoints.MapHub<SimpleChat.Hubs.SimpleChatHub>("/simplechat");
                 //endpoints.MapGet("/", async context =>
                 //{
                 //    await context.Response.WriteAsync("Hello World!");
