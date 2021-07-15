@@ -34,7 +34,7 @@ namespace SimpleChat
             app.UseRouting();
             app.UseAzureSignalR(routes =>
             {
-                routes.MapHub<SimpleChatHub>("/chat");
+                routes.MapHub<SimpleChatHub>("/simplechat");
             });
             // app.MapAzureSignalR(this.GetType().FullName);
 
